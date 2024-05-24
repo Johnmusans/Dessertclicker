@@ -20,6 +20,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -71,10 +72,12 @@ import com.example.dessertclicker.data.Datasource
 import com.example.dessertclicker.model.Dessert
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 
+private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate Called")
         setContent {
             DessertClickerTheme {
                 // A surface container using the 'background' color from the theme
@@ -87,6 +90,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    //ajouter la fonction suivante
+    override fun onStart() {
+        super.onStart()
     }
 }
 
@@ -336,4 +344,5 @@ fun MyDessertClickerAppPreview() {
     DessertClickerTheme {
         DessertClickerApp(listOf(Dessert(R.drawable.cupcake, 5, 0)))
     }
+
 }
